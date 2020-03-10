@@ -9,7 +9,7 @@ static const std::string BINARY_NAME = "esoteric";
 static const std::string TEMP_FILE = "/tmp/" + BINARY_NAME + ".tmp";
 static const std::string APP_TTY = "/dev/tty1";
 
-static const std::string & EXTERNAL_CARD_PATH = "/media";
+static const std::string & EXTERNAL_CARD_PATH = "/media/sdcard/";
 
 #ifdef TARGET_RG350
 static const std::string USER_HOME = "/media/data/local/home/";
