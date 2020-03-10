@@ -13,6 +13,8 @@
 #include "hw-linux.h"
 #include "hw-pg2.h"
 #include "hw-rg350.h"
+#include "hw-rg350-vga.h"
+
 
 IHardware* HwFactory::GetHardware(std::string device) {
     TRACE("enter : %s", device.c_str());
@@ -30,7 +32,9 @@ IHardware* HwFactory::GetHardware(std::string device) {
         return (IHardware*)new HwGeneric();
     } else if (0 == device.compare("rg350")) {
         return (IHardware*)new HwRg350();
-    } else
+    } else if (0 == device.compare("rg350vga")) {
+        return (IHardware*)new HwRg350Vga();
+    }else
         return (IHardware*)new HwGeneric();
 }
 
@@ -41,8 +45,9 @@ std::vector<std::string> HwFactory::supportedDevices() {
         "gkd350h",
         "linux",
         "pg2",
-        "retrofw"
-        "rg350"};
+	  "retrofw",
+	  "rg350",
+	  "rg350vga"};
 }
 
 std::string HwFactory::readDeviceType() {
@@ -66,6 +71,8 @@ std::string HwFactory::readDeviceType() {
             TRACE("hwvariant : '%s'", value.c_str());
             if (0 == value.compare("rg350")) {
                 return "rg350";
+            } else if (0 == value.compare("rg350vga")) {
+                return "rg350vga";
             } else if (0 == value.compare("v11_ddr2_256mb")) {
                 return "gcw0";
             } else if (0 == value.compare("v20_mddr_512mb")) { 
