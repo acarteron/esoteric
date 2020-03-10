@@ -2,7 +2,7 @@
 
 APP_NAME="esoteric";
 OPK_EXTENSION=".opk";
-ASSETS_PATH="dist/RG350/esoteric";
+ASSETS_PATH="dist/RG350VGA/esoteric";
 argCount=$#
 OPK_NAME="${APP_NAME}${OPK_EXTENSION}"
 SUPPORTED_PLATFORMS=("gcw0" "retrofw")

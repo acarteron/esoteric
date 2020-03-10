@@ -189,7 +189,7 @@ function myClean () {
 			local cmd="make -f ./Makefile.linux clean${REDIRECT}"
 			eval ${cmd}
 			;;
-		rg350 )
+		rg350vga )
 			echo "doing a rg350 clean"
 			export CROSS_COMPILE=/opt/gcw0-toolchain/usr/bin/mipsel-linux-
 			local cmd="make -f ./Makefile.rg-350 clean${REDIRECT}"
@@ -221,7 +221,7 @@ function myBuild () {
 				echo "binary: ./dist/LINUX/esoteric/esoteric"
 			fi
 			;;
-		rg350 )
+		rg350vga )
 			echo "doing a rg350 build"
 			export CROSS_COMPILE=/opt/gcw0-toolchain/usr/bin/mipsel-linux-
 			local cmd="make -f ./Makefile.rg-350 all dist${REDIRECT}"
@@ -265,7 +265,7 @@ function makePackage () {
 			eval ${cmd}
 			echo "linux package created at : ${artifact}"
 			;;
-		rg350 )
+		rg350vga )
 			echo "building a rg350 package"
 			export CROSS_COMPILE=/opt/gcw0-toolchain/usr/bin/mipsel-linux-
 			local cmd="make -f ./Makefile.rg-350 dist${REDIRECT}"
@@ -321,7 +321,7 @@ doUninstall="false"
 doRelease="false"
 doPackage="false"
 
-validTargets=("linux" "rg350")
+validTargets=("linux" "rg350vga")
 
 while getopts ":bcd:hiprst:uvV" opt; do
 
