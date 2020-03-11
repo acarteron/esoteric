@@ -189,10 +189,16 @@ function myClean () {
 			local cmd="make -f ./Makefile.linux clean${REDIRECT}"
 			eval ${cmd}
 			;;
-		rg350vga )
+		rg350 )
 			echo "doing a rg350 clean"
 			export CROSS_COMPILE=/opt/gcw0-toolchain/usr/bin/mipsel-linux-
 			local cmd="make -f ./Makefile.rg-350 clean${REDIRECT}"
+			eval ${cmd}
+			;;
+		rg350vga )
+			echo "doing a rg350vga clean"
+			export CROSS_COMPILE=/opt/gcw0-toolchain/usr/bin/mipsel-linux-
+			local cmd="make -f ./Makefile.rg-350-vga clean${REDIRECT}"
 			eval ${cmd}
 			;;
 	esac
@@ -221,10 +227,16 @@ function myBuild () {
 				echo "binary: ./dist/LINUX/esoteric/esoteric"
 			fi
 			;;
-		rg350vga )
+		rg350 )
 			echo "doing a rg350 build"
 			export CROSS_COMPILE=/opt/gcw0-toolchain/usr/bin/mipsel-linux-
 			local cmd="make -f ./Makefile.rg-350 all dist${REDIRECT}"
+			eval ${cmd}
+			;;
+		rg350vga )
+			echo "doing a rg350vga build"
+			export CROSS_COMPILE=/opt/gcw0-toolchain/usr/bin/mipsel-linux-
+			local cmd="make -f ./Makefile.rg-350-vga all dist${REDIRECT}"
 			eval ${cmd}
 			;;
 		* )
@@ -265,7 +277,7 @@ function makePackage () {
 			eval ${cmd}
 			echo "linux package created at : ${artifact}"
 			;;
-		rg350vga )
+		rg350 )
 			echo "building a rg350 package"
 			export CROSS_COMPILE=/opt/gcw0-toolchain/usr/bin/mipsel-linux-
 			local cmd="make -f ./Makefile.rg-350 dist${REDIRECT}"
@@ -274,6 +286,16 @@ function makePackage () {
 			local cmd="./make_opk.sh \"${artifact}\" \"${version}\"${REDIRECT}"
 			eval ${cmd}
 			echo "rg350 package created at : ${artifact}"
+			;;
+		rg350vga )
+			echo "building a rg350vga package"
+			export CROSS_COMPILE=/opt/gcw0-toolchain/usr/bin/mipsel-linux-
+			local cmd="make -f ./Makefile.rg-350-vga dist${REDIRECT}"
+			local artifact="${APP_NAME}-${version}.opk"
+			eval ${cmd}
+			local cmd="./make_opk.sh \"${artifact}\" \"${version}\"${REDIRECT}"
+			eval ${cmd}
+			echo "rg350vga package created at : ${artifact}"
 			;;
 		* )
 			echo "no package defined for ${target}"
@@ -321,7 +343,7 @@ doUninstall="false"
 doRelease="false"
 doPackage="false"
 
-validTargets=("linux" "rg350vga")
+validTargets=("linux" "rg350" "rg350vga")
 
 while getopts ":bcd:hiprst:uvV" opt; do
 

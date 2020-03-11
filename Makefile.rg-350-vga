@@ -1,5 +1,5 @@
-TARGET=RG350
-PATH_DIR=rg-350
+TARGET=RG350VGA
+PATH_DIR=rg-350-vga
 
 CC = $(CROSS_COMPILE)gcc
 CXX = $(CROSS_COMPILE)g++
@@ -70,7 +70,7 @@ dist: all
 	install -m644 -D ChangeLog.md $(DISTDIR)/ChangeLog.md
 	install -m644 -D about.txt $(DISTDIR)/about.txt
 	install -m644 -D assets/$(PATH_DIR)/esoteric.conf $(DISTDIR)
-	cp -RH assets/skins assets/translations $(DISTDIR)
+	cp -RH assets/$(PATH_DIR)/skins assets/translations $(DISTDIR)
 	cp -RH assets/$(PATH_DIR)/scripts $(DISTDIR)
 	cp -RH assets/$(PATH_DIR)/sections $(DISTDIR)
 	cp -RH assets/input $(DISTDIR)
