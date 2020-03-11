@@ -143,8 +143,8 @@ void Config::reset() {
 
     // ints
     this->buttonRepeatRate_ = 10;
-    this->resolutionX_ = 640;
-    this->resolutionY_ = 480;
+    this->resolutionX_ = 320;
+    this->resolutionY_ = 240;
     this->videoBpp_ = 32;
 
     this->powerTimeout_ = 10;
