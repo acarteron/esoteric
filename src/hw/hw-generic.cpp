@@ -4,9 +4,9 @@
 #include <vector>
 
 #include "constants.h"
-#include "hw-generic.h"
-#include "hw-power.h"
-#include "hw-clock.h"
+#include "hw/hw-generic.h"
+#include "hw/hw-power.h"
+#include "hw/hw-clock.h"
 
 HwGeneric::HwGeneric() : IHardware() {
 

@@ -6,14 +6,14 @@
 #include "stringutils.h"
 #include "fileutils.h"
 
-#include "hwfactory.h"
-#include "hw-ihardware.h"
-#include "hw-generic.h"
-#include "hw-gkd350h.h"
-#include "hw-linux.h"
-#include "hw-pg2.h"
-#include "hw-rg350.h"
-#include "hw-rg350-vga.h"
+#include "hw/hwfactory.h"
+#include "hw/hw-ihardware.h"
+#include "hw/hw-generic.h"
+#include "hw/hw-gkd350h.h"
+#include "hw/hw-linux.h"
+#include "hw/hw-pg2.h"
+#include "hw/hw-rg350.h"
+#include "hw/hw-rg350-vga.h"
 
 
 IHardware* HwFactory::GetHardware(std::string device) {
@@ -70,7 +70,7 @@ std::string HwFactory::readDeviceType() {
         if (name == "hwvariant") {
             TRACE("hwvariant : '%s'", value.c_str());
             if (0 == value.compare("rg350")) {
-                return "rg350";
+                return "rg350vga";
             } else if (0 == value.compare("rg350vga")) {
                 return "rg350vga";
             } else if (0 == value.compare("v11_ddr2_256mb")) {

@@ -11,12 +11,12 @@
 #include "fileutils.h"
 #include "stringutils.h"
 #include "debug.h"
-#include "hw-rg350-vga.h"
-#include "hw-cpu.h"
-#include "hw-power.h"
-#include "hw-clock.h"
+#include "hw/hw-rg350.h"
+#include "hw/hw-cpu.h"
+#include "hw/hw-power.h"
+#include "hw/hw-clock.h"
 
-HwRg350Vga::HwRg350Vga() : IHardware() {
+HwRg350::HwRg350() : IHardware() {
     TRACE("enter");
     this->BLOCK_DEVICE = "/sys/block/mmcblk1/size";
     this->INTERNAL_MOUNT_DEVICE = "/dev/mmcblk0";
@@ -41,7 +41,7 @@ HwRg350Vga::HwRg350Vga() : IHardware() {
         this->getBacklightLevel(),
         this->soundcard_->getVolume());
 }
-HwRg350Vga::~HwRg350Vga() {
+HwRg350::~HwRg350() {
     delete this->clock_;
     delete this->cpu_;
     delete this->soundcard_;
@@ -49,14 +49,14 @@ HwRg350Vga::~HwRg350Vga() {
     this->ledOff();
 }
 
-bool HwRg350Vga::getTVOutStatus() { return 0; };
-std::string HwRg350Vga::getTVOutMode() { return "OFF"; }
-void HwRg350Vga::setTVOutMode(std::string mode) {
+bool HwRg350::getTVOutStatus() { return 0; };
+std::string HwRg350::getTVOutMode() { return "OFF"; }
+void HwRg350::setTVOutMode(std::string mode) {
     std::string val = mode;
     if (val != "NTSC" && val != "PAL") val = "OFF";
 }
 
-void HwRg350Vga::ledOn(int flashSpeed) {
+void HwRg350::ledOn(int flashSpeed) {
     TRACE("enter");
     try {
         int limited = constrain(flashSpeed, 0, atoi(ledMaxBrightness_.c_str()));
@@ -72,7 +72,7 @@ void HwRg350Vga::ledOn(int flashSpeed) {
     }
     TRACE("exit");
 }
-void HwRg350Vga::ledOff() {
+void HwRg350::ledOff() {
     TRACE("enter");
     try {
         std::string trigger = this->triggerToString(LedAllowedTriggers::NONE);
@@ -88,7 +88,7 @@ void HwRg350Vga::ledOff() {
     return;
 }
 
-int HwRg350Vga::getBacklightLevel() {
+int HwRg350::getBacklightLevel() {
     TRACE("enter");
     if (this->pollBacklight) {
         int level = 0;
@@ -102,7 +102,7 @@ int HwRg350Vga::getBacklightLevel() {
     TRACE("exit : %i", this->backlightLevel_);
     return this->backlightLevel_;
 }
-int HwRg350Vga::setBacklightLevel(int val) {
+int HwRg350::setBacklightLevel(int val) {
     TRACE("enter - %i", val);
     // wrap it
     if (val <= 0)
@@ -124,7 +124,7 @@ int HwRg350Vga::setBacklightLevel(int val) {
     return this->backlightLevel_;
 }
 
-bool HwRg350Vga::getKeepAspectRatio() {
+bool HwRg350::getKeepAspectRatio() {
     TRACE("enter");
     if (FileUtils::fileExists(ASPECT_RATIO_PATH)) {
         std::string result = FileUtils::fileReader(ASPECT_RATIO_PATH);
@@ -138,7 +138,7 @@ bool HwRg350Vga::getKeepAspectRatio() {
     TRACE("exit : %i", this->keepAspectRatio_);
     return this->keepAspectRatio_;
 }
-bool HwRg350Vga::setKeepAspectRatio(bool val) {
+bool HwRg350::setKeepAspectRatio(bool val) {
     TRACE("enter - %i", val);
     std::string payload = val ? "Y" : "N";
     if (FileUtils::fileWriter(ASPECT_RATIO_PATH, payload)) {
@@ -150,16 +150,16 @@ bool HwRg350Vga::setKeepAspectRatio(bool val) {
     return this->keepAspectRatio_;
 }
 
-std::string HwRg350Vga::getDeviceType() { return "RG-350-VGA"; }
+std::string HwRg350::getDeviceType() { return "RG-350"; }
 
-bool HwRg350Vga::setScreenState(const bool &enable) {
+bool HwRg350::setScreenState(const bool &enable) {
     TRACE("enter : %s", (enable ? "on" : "off"));
     const char *path = SCREEN_BLANK_PATH.c_str();
     const char *blank = enable ? "0" : "1";
     return this->writeValueToFile(path, blank);
 }
 
-std::string HwRg350Vga::systemInfo() {
+std::string HwRg350::systemInfo() {
     TRACE("append - command /usr/bin/system_info");
     if (FileUtils::fileExists("/usr/bin/system_info")) {
         return FileUtils::execute("/usr/bin/system_info") + "\n";
@@ -167,7 +167,7 @@ std::string HwRg350Vga::systemInfo() {
     return IHardware::systemInfo();
 }
 
-std::string HwRg350Vga::triggerToString(LedAllowedTriggers t) {
+std::string HwRg350::triggerToString(LedAllowedTriggers t) {
     TRACE("mode : %i", t);
     switch (t) {
         case TIMER:
@@ -179,6 +179,6 @@ std::string HwRg350Vga::triggerToString(LedAllowedTriggers t) {
     };
 }
 
-void HwRg350Vga::resetKeymap() {
+void HwRg350::resetKeymap() {
     this->writeValueToFile(ALT_KEYMAP_FILE, "N");
 }

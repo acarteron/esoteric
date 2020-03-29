@@ -36,7 +36,7 @@
 #include "skin.h"
 #include "config.h"
 #include "ui.h"
-#include "hw-ihardware.h"
+#include "hw/hw-ihardware.h"
 
 #ifdef HAVE_LIBOPK
 #include "opkcache.h"

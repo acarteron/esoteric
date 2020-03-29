@@ -39,7 +39,7 @@
 #include "iconbutton.h"
 #include "messagebox.h"
 #include "progressbar.h"
-#include "hwfactory.h"
+#include "hw/hwfactory.h"
 #include "managers/screenmanager.h"
 #include "managers/powermanager.h"
 #include "inputdialog.h"

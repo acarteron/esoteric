@@ -10,10 +10,10 @@
 #include "fileutils.h"
 #include "stringutils.h"
 #include "debug.h"
-#include "hw-pg2.h"
-#include "hw-cpu.h"
-#include "hw-power.h"
-#include "hw-clock.h"
+#include "hw/hw-pg2.h"
+#include "hw/hw-cpu.h"
+#include "hw/hw-power.h"
+#include "hw/hw-clock.h"
 
 HwPG2::HwPG2() : IHardware() {
     TRACE("enter");

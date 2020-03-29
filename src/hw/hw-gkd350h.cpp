@@ -3,10 +3,10 @@
 #include <math.h>
 
 #include "constants.h"
-#include "hw-gkd350h.h"
-#include "hw-cpu.h"
-#include "hw-power.h"
-#include "hw-clock.h"
+#include "hw/hw-gkd350h.h"
+#include "hw/hw-cpu.h"
+#include "hw/hw-power.h"
+#include "hw/hw-clock.h"
 #include "fileutils.h"
 
 HwGkd350h::HwGkd350h() : IHardware() {

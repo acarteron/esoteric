@@ -8,7 +8,7 @@
 #include "debug.h"
 #include "stringutils.h"
 
-#include "hw-clock.h"
+#include "hw/hw-clock.h"
 
 std::string IClock::getBuildDate() {
     char buildBits[] = {

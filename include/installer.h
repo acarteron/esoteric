@@ -6,7 +6,7 @@
 #include <functional>
 
 #include "constants.h"
-#include "hw-ihardware.h"
+#include "hw/hw-ihardware.h"
 #include "config.h"
 
 class Installer {

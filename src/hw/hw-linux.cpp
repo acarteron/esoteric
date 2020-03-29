@@ -5,9 +5,9 @@
 #include <unordered_map>
 #include <vector>
 
-#include "hw-linux.h"
-#include "hw-power.h"
-#include "hw-clock.h"
+#include "hw/hw-linux.h"
+#include "hw/hw-power.h"
+#include "hw/hw-clock.h"
 
 HwLinux::HwLinux() : IHardware() {
 

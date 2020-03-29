@@ -8,7 +8,7 @@
 #include <sstream>
 #include <fstream>
 
-#include "hw-power.h"
+#include "hw/hw-power.h"
 #include "fileutils.h"
 #include "stringutils.h"
 

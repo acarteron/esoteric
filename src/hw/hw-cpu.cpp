@@ -1,6 +1,6 @@
 
 
-#include "hw-cpu.h"
+#include "hw/hw-cpu.h"
 
 const std::string JZ4770Factory::SYSFS_CPU_SCALING_GOVERNOR = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
 const std::string JZ4770Factory::SYSFS_CPUFREQ_SET = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed";

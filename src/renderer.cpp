@@ -605,7 +605,7 @@ void Renderer::render() {
 void Renderer::layoutHelperIcons(std::vector<Surface*> icons, int rootXPos, int rootYPos) {
 	TRACE("enter");
 
-	int helperHeight = 20;
+	int helperHeight = 40;
 	int iconsPerRow = 0;
 	if (app->sectionBarRect.w > app->sectionBarRect.h) {
 		iconsPerRow = (int)(app->sectionBarRect.h / (float)helperHeight);
