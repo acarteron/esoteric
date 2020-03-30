@@ -1,9 +1,9 @@
 include ./standard_def.mk
-	
-ifeq ($(target),rg350vga)
+
+ifeq ($(target),rg-350-vga)
 -include ./standard_def_rg350vga.mk
 endif
-	
+
 ifeq ($(target),linux)
 -include ./standard_def_linux.mk
 endif

@@ -33,6 +33,7 @@ CFLAGS = \
 	-fomit-frame-pointer
 
 CXXFLAGS = $(CFLAGS)
-LDFLAGS = $(SDL_LIBS) -lfreetype -lSDL_image -lSDL_ttf -lSDL_gfx -lSDL_mixer -lopk -lpng -lasound # -L$(DIR_LK)/$(DIR_LIB)
+LDFLAGS = -L$(SYSROOT)/usr/lib/ $(SDL_LIBS)  -lfreetype -lSDL_image -lSDL_ttf -lSDL_gfx -lSDL_mixer -lopk -lpng -lasound # -L$(DIR_LK)/$(DIR_LIB)
 CFLAGS_OBJ=-I $(ROOT)/$(DIR_HDR) # -I $(DIR_LK)/$(DIR_HDR) # -Wall -Wextra 
+SRC_IGNORE=false
 
