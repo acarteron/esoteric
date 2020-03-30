@@ -1,7 +1,10 @@
-SRC:=$(wildcard $(ROOT)/$(DIR_SRC)/*.cpp)
+# SRC:=$(wildcard $(ROOT)/$(DIR_SRC)/*.cpp)
+SRC:=$(filter-out $(SRC_IGNORE) , $(wildcard $(ROOT)/$(DIR_SRC)/*.cpp))
 OBJ:=$(SRC:$(ROOT)/$(DIR_SRC)/%.cpp=$(ROOT)/$(DIR_OBJ)/%.o)
 
-
+ifeq ($(SRC_IGNORE), false)
+-include $(ROOT)/$(DIR_SRC)/opk/src.mk
+endif
 -include $(ROOT)/$(DIR_SRC)/hw/src.mk
 # -include $(ROOT)/$(DIR_SRC)/raw/src.mk
 # -include $(ROOT)/$(DIR_SRC)/abstract/src.mk
@@ -15,7 +18,7 @@ OBJ:=$(SRC:$(ROOT)/$(DIR_SRC)/%.cpp=$(ROOT)/$(DIR_OBJ)/%.o)
 $(EXEC): $(EXEC)-debug
 	$(STRIP) $< -o $@
 
-$(EXEC)-debug: $(HWOBJ) $(OBJ)
+$(EXEC)-debug: $(HWOBJ) $(OPKSRC) $(OBJ)
 	@echo "Linking debug..."
 	$(GXX) -o $@ $^ $(LDFLAGS) 
 	 # $(LDFLAGS) 

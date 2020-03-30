@@ -39,7 +39,7 @@
 #include "hw/hw-ihardware.h"
 
 #ifdef HAVE_LIBOPK
-#include "opkcache.h"
+#include "opk/opkcache.h"
 #endif
 
 #include <unistd.h>

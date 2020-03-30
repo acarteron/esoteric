@@ -25,7 +25,7 @@
 #include <algorithm>
 #include <math.h>
 #include <fstream>
-#include <opk.h>
+//#include <opk.h>
 
 #include "esoteric.h"
 #include "linkapp.h"

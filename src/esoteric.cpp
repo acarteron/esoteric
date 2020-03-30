@@ -55,7 +55,6 @@
 #include "menusettingimage.h"
 #include "menusettingdir.h"
 #include "imageviewerdialog.h"
-#include "linkscannerdialog.h"
 #include "menusettingdatetime.h"
 #include "debug.h"
 #include "skin.h"
@@ -66,7 +65,8 @@
 #include "constants.h"
 
 #ifdef HAVE_LIBOPK
-#include "opkcache.h"
+#include "linkscannerdialog.h"
+#include "opk/opkcache.h"
 #endif
 
 #ifndef __BUILDTIME__
@@ -1740,7 +1740,7 @@ void Esoteric::viewLog() {
 		this->hw->ledOff();
 	}
 }
-
+#ifdef HAVE_LIBOPK
 void Esoteric::linkScanner() {
 	LinkScannerDialog ls(
 		this, 
@@ -1749,6 +1749,7 @@ void Esoteric::linkScanner() {
 		"skin:icons/configure.png");
 	ls.exec();
 }
+#endif
 
 void Esoteric::changeWallpaper() {
 	TRACE("enter");
@@ -2142,8 +2143,10 @@ void Esoteric::contextMenu() {
 	voices.push_back((MenuOption){tr["Rename section"],	fastdelegate::MakeDelegate(this, &Esoteric::renameSection)});
 	voices.push_back((MenuOption){tr["Hide section"],	fastdelegate::MakeDelegate(this, &Esoteric::hideSection)});
 	voices.push_back((MenuOption){tr["Delete section"],	fastdelegate::MakeDelegate(this, &Esoteric::deleteSection)});
+#ifdef HAVE_LIBOPK
 	voices.push_back((MenuOption){tr["App scanner"],	fastdelegate::MakeDelegate(this, &Esoteric::linkScanner)});
-
+#endif
+    
 	Surface bg(screen);
 	bool close = false, inputAction = false;
 	int sel = 0;

@@ -58,7 +58,7 @@ void HwLinux::reboot() {
     return;
 }
 
-int HwLinux::defaultScreenWidth() { return 320; }
-int HwLinux::defaultScreenHeight() { return 240; }
+int HwLinux::defaultScreenWidth() { return 640; }
+int HwLinux::defaultScreenHeight() { return 480; }
 
 bool HwLinux::setScreenState(const bool &enable) { return true; }

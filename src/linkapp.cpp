@@ -24,7 +24,12 @@
 
 #include <fstream>
 #include <sstream>
+
+#ifdef HAVE_LIBOPK
 #include <opk.h>
+#include "imageio.h"
+#endif
+
 #include <array>
 #include <cerrno>
 
@@ -33,7 +38,6 @@
 #include "launcher.h"
 #include "menu.h"
 #include "selector.h"
-#include "imageio.h"
 #include "debug.h"
 #include "constants.h"
 #include "stringutils.h"

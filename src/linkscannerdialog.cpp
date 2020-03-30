@@ -25,6 +25,7 @@ void LinkScannerDialog::quit() {
 }
 
 void LinkScannerDialog::exec() {
+    
 	bool close = false;
 	bool cacheChanged = false;
 	this->finished_ = false;
