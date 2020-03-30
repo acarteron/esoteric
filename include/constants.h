@@ -11,7 +11,7 @@ static const std::string APP_TTY = "/dev/tty1";
 
 static const std::string & EXTERNAL_CARD_PATH = "/media/sdcard/";
 
-#ifdef TARGET_RG350
+#if defined(TARGET_RG350) || defined(TARGET_RG350VGA)
 static const std::string USER_HOME = "/media/data/local/home/";
 #else
 static const std::string USER_HOME = "~/";

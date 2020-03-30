@@ -16,7 +16,7 @@ function makePackage () {
 	echo "make_opk needs a target"
 	exit 1
     fi
-    ASSETS_PATH="dist/$1/esoteric"
+    ASSETS_PATH="dist/$1"
     if [ ! -d ${ASSETS_PATH} ]; then
 	echo "Can't find ${ASSETS_PATH}, You need to run a make dist first"
 	exit 1

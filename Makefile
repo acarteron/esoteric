@@ -17,19 +17,19 @@ EXEC=$(ROOT)/$(DIR_BIN)/$(TARGET)/esoteric
 all: dist
 
 dist: createdirectories $(EXEC) 
-	install -m755 -D $(EXEC) $(DIR_DST)/esoteric
-	install -m644 -D README.md $(DIR_DST)/esoteric.man.txt
-	install -m644 -D COPYING $(DIR_DST)/COPYING
-	install -m644 -D ChangeLog.md $(DIR_DST)/ChangeLog.md
-	install -m644 -D about.txt $(DIR_DST)/about.txt
-	install -m644 -D assets/$(target)/esoteric.conf $(DIR_DST)
-	cp -RH assets/$(target)/skins assets/translations $(DIR_DST)
-	cp -RH assets/$(target)/scripts $(DIR_DST)
-	cp -RH assets/$(target)/sections $(DIR_DST)
-	cp -RH assets/input $(DIR_DST)
-	cp assets/$(target)/icons/rg350.png $(DIR_DST)/logo.png
-	cp assets/$(target)/icons/rg350.png $(DIR_DST)/skins/Default/icons/device.png
-	cp assets/$(target)/icons/rg350.png $(DIR_DST)/skins/Minimal/icons/device.png
+	install -m755 -D $(EXEC) $(DIR_DST)/$(TARGET)/esoteric
+	install -m644 -D README.md $(DIR_DST)/$(TARGET)/esoteric.man.txt
+	install -m644 -D COPYING $(DIR_DST)/$(TARGET)/COPYING
+	install -m644 -D ChangeLog.md $(DIR_DST)/$(TARGET)/ChangeLog.md
+	install -m644 -D about.txt $(DIR_DST)/$(TARGET)/about.txt
+	install -m644 -D assets/$(target)/esoteric.conf $(DIR_DST)/$(TARGET)
+	cp -RH assets/$(target)/skins assets/translations $(DIR_DST)/$(TARGET)
+	cp -RH assets/$(target)/scripts $(DIR_DST)/$(TARGET)
+	cp -RH assets/$(target)/sections $(DIR_DST)/$(TARGET)
+	cp -RH assets/input $(DIR_DST)/$(TARGET)
+	cp assets/$(target)/icons/rg350.png $(DIR_DST)/$(TARGET)/logo.png
+	cp assets/$(target)/icons/rg350.png $(DIR_DST)/$(TARGET)/skins/Default/icons/device.png
+	cp assets/$(target)/icons/rg350.png $(DIR_DST)/$(TARGET)/skins/Minimal/icons/device.png
 
 # all: createdirectories $(EXEC) 
 
