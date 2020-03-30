@@ -31,7 +31,7 @@ CFLAGS = \
     -mplt \
     -msym32 \
 	-funroll-loops \
-	-fomit-frame-pointer
+	-fomit-frame-pointer -I ./include
 
 CXXFLAGS = $(CFLAGS)
 LDFLAGS = $(SDL_LIBS) -lfreetype -lSDL_image -lSDL_ttf -lSDL_gfx -lSDL_mixer -lSDL -lpthread -lopk -lpng -lasound
@@ -44,7 +44,7 @@ SOURCES := $(wildcard src/*.cpp)
 OBJS := $(patsubst src/%.cpp, $(OBJDIR)/src/%.o, $(SOURCES))
 
 # File types rules
-$(OBJDIR)/src/%.o: src/%.cpp src/%.h
+$(OBJDIR)/src/%.o: src/%.cpp
 	$(CXX) $(CFLAGS) -o $@ -c $<
 
 all: dir shared

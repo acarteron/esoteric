@@ -1,11 +1,11 @@
 include ./standard_def.mk
 
-EXEC=$(ROOT)/$(DIR_BIN)/esoteric
+EXEC=$(ROOT)/$(DIR_BIN)/$(TARGET)/esoteric
 
 all: createdirectories $(EXEC) 
 
 createdirectories:
-	@mkdir -p $(DIR_OBJ)/$(TARGET)/src $(DIR_BIN) $(DIR_LIB) $(DIR_DIST) $(DIR_OPK)
+	@mkdir -p $(DIR_OBJ)/$(TARGET)/src $(DIR_BIN)/$(TARGET) $(DIR_LIB) $(DIR_DIST) $(DIR_OPK)
 
 -include $(ROOT)/$(DIR_SRC)/src.mk
 
